@@ -1,4 +1,5 @@
 import Questions from "../models/Questions.js";
+import users from "../models/auth.js";
 import mongoose from "mongoose";
 
 export const AskQuestion = async (req, res) => {
@@ -9,7 +10,7 @@ export const AskQuestion = async (req, res) => {
     res.status(200).json("Posted a Question successfully");
   } catch (error) {
     console.log(error);
-    res.status(409), json("Couldn't post a new question");
+    res.status(409).json("Couldn't post a new question");
   }
 };
 
@@ -75,6 +76,24 @@ export const voteQuestion = async (req, res) => {
     }
     await Questions.findByIdAndUpdate(_id, question);
     res.status(200).json({ message: "voted successfully..." });
+  } catch (error) {
+    res.status(404).json({ message: "id not found" });
+  }
+};
+
+export const giveBadge = async (req, res) => {
+  const { id: _id } = req.params;
+  const { badge, userId } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).send("question unavailable...");
+  }
+
+  try {
+    if (Questions.upVote.length > 5) {
+      users.findByIdAndUpdate(userId, { $addToSet: { badge: badge } });
+    }
+    res.status(200).json({ message: "badge assigned" });
   } catch (error) {
     res.status(404).json({ message: "id not found" });
   }

@@ -7,6 +7,8 @@ const userSchema = mongoose.Schema({
   about: { type: String },
   tags: { type: [String] },
   joinedOn: { type: Date, default: Date.now },
+  upvotebadge: { type: String },
+  answerbadge: { type: String },
 });
 
 export default mongoose.model("User", userSchema);

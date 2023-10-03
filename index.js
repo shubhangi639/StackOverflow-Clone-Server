@@ -25,8 +25,6 @@ const PORT = process.env.PORT || 5000;
 
 const DATABASE_URL = process.env.CONNECTION_URL;
 
-console.log(DATABASE_URL);
-
 mongoose
   .connect(DATABASE_URL, {
     useNewUrlParser: true,
