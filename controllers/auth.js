@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-// import dotenv from "dotenv";
+import dotenv from "dotenv";
 import users from "../models/auth.js";
 
 export const signup = async (req, res) => {
-  // dotenv.config();
+  dotenv.config();
   const { name, email, password } = req.body;
   try {
     const existinguser = await users.findOne({ email });
