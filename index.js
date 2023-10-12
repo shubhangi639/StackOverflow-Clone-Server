@@ -23,7 +23,7 @@ app.use("/answer", answerRoutes);
 
 const PORT = process.env.PORT;
 
-const DATABASE_URL = process.env.CONNECTION_URL;
+const DATABASE_URL = "mongodb+srv://admin:admin@cluster0.eba53h3.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
   .connect(DATABASE_URL, {

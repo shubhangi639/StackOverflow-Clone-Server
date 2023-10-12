@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon index.js"
   },
-  "author": "Aniket Pawar",
+  "author": "Shubhra Koli",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
